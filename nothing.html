@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>human flaw</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="nothing.js"></script>
+    <style type='text/css'>
+      circle{
+      r:10;
+      fill:rgba(255,0,0,.9);
+      stroke:'red';
+      stroke-width:'3';
+      }
+
+      line{
+      stroke:rgba(255,0,0,.5);
+      stroke-width:3;
+      }
+      
+    </style>
+  </head>
+  <body>
+      <script>
+
+	height = 600;
+	width = 600;
+
+	var svg = d3.select('body').append('svg')
+	.style('width',width)
+	.style('height',height)
+	
+	var n1 = new Node('n1','150','100');
+	var n2 = new Node('n2','150','50');
+	var n3 = new Node('n3','200','30');
+	var e1 = new Edge('e1', n1, n2);
+	var e2 = new Edge('e2', n2, n3);
+	var e3 = new Edge('e3', n1, n3);
+
+	n1.draw(svg);
+	n2.draw(svg);
+	n3.draw(svg);
+	e1.draw(svg);
+	e2.draw(svg);
+	e3.draw(svg);
+	
+
+	//apply functionality
+
+	var g1 = new Gate('g1', '300', '150');
+
+	g1.draw(svg); //add open-closed circle visual
+	
+	$('circle').on("click",function(){ d3.select(this).attr("transform","translate("+d3.mouse(this)+",0)");return});
+      </script>
+  </body>
+</html>
+
+
